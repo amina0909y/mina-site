@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>[Your Name] — Reading</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1F2E23;
+    --paper:#FAF6EF;
+    --rose:#C97B84;
+    --sage:#8FA482;
+    --gold:#C9A15A;
+    --ink-soft:#3C4B3F;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+
+  body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background-image:radial-gradient(circle at 1px 1px, rgba(31,46,35,0.035) 1px, transparent 0);
+    background-size:22px 22px;
+    pointer-events:none;
+    z-index:0;
+  }
+
+  a{color:inherit;text-decoration:none;}
+
+  /* NAV */
+  nav{
+    position:sticky;
+    top:0;
+    z-index:20;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:clamp(14px,3vw,34px);
+    padding:20px 24px;
+    background:rgba(250,246,239,0.86);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid rgba(31,46,35,0.08);
+    flex-wrap:wrap;
+  }
+
+  nav a{
+    font-size:0.86rem;
+    letter-spacing:0.04em;
+    font-weight:500;
+    color:var(--ink-soft);
+    position:relative;
+    padding:4px 2px;
+    transition:color 0.25s ease;
+  }
+
+  nav a.current{color:var(--ink);}
+
+  nav a::after{
+    content:"";
+    position:absolute;
+    left:0; right:0; bottom:-2px;
+    height:1px;
+    background:var(--rose);
+    transform:scaleX(0);
+    transform-origin:left;
+    transition:transform 0.3s ease;
+  }
+
+  nav a:hover::after,
+  nav a.current::after{transform:scaleX(1);}
+
+  /* PAGE HEADER */
+  .page-head{
+    max-width:720px;
+    margin:0 auto;
+    padding:80px 24px 20px;
+    text-align:center;
+    position:relative;
+    z-index:1;
+  }
+
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.72rem;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    margin-bottom:16px;
+  }
+
+  h1{
+    font-family:'Fraunces',serif;
+    font-weight:500;
+    font-size:clamp(2.2rem,5.5vw,3.4rem);
+    line-height:1.1;
+    letter-spacing:-0.01em;
+  }
+
+  .page-sub{
+    max-width:480px;
+    margin:18px auto 0;
+    font-size:1.02rem;
+    line-height:1.65;
+    color:var(--ink-soft);
+  }
+
+  .placeholder{color:var(--rose);font-style:italic;}
+
+  /* CURRENTLY READING */
+  .current-read{
+    max-width:800px;
+    margin:60px auto 0;
+    padding:0 24px;
+    position:relative;
+    z-index:1;
+  }
+
+  .current-card{
+    display:flex;
+    gap:32px;
+    align-items:center;
+    background:#fff;
+    border:1px solid rgba(31,46,35,0.08);
+    border-radius:20px;
+    padding:32px;
+  }
+
+  .book-cover{
+    flex:0 0 120px;
+    height:172px;
+    border-radius:6px;
+    background:linear-gradient(160deg, var(--ink), var(--ink-soft));
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    box-shadow:0 12px 26px rgba(31,46,35,0.22), inset 0 0 0 1px rgba(255,255,255,0.06);
+    position:relative;
+  }
+
+  .book-cover svg{width:26px;height:26px;stroke:var(--gold);opacity:0.85;}
+
+  .current-card .t-label{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.72rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--gold);
+    margin-bottom:8px;
+  }
+
+  .current-card h2{
+    font-family:'Fraunces',serif;
+    font-weight:500;
+    font-size:1.5rem;
+    margin-bottom:4px;
+  }
+
+  .current-card .author{
+    font-size:0.9rem;
+    color:var(--ink-soft);
+    margin-bottom:12px;
+  }
+
+  .current-card p.note-line{
+    font-size:0.96rem;
+    line-height:1.65;
+    color:var(--ink-soft);
+  }
+
+  @media (max-width:560px){
+    .current-card{flex-direction:column;text-align:center;}
+  }
+
+  /* SHELF */
+  .shelf-head{
+    max-width:1000px;
+    margin:80px auto 8px;
+    padding:0 24px;
+    text-align:center;
+    position:relative;
+    z-index:1;
+  }
+
+  .shelf-head h3{
+    font-family:'Fraunces',serif;
+    font-weight:500;
+    font-size:1.6rem;
+    margin-bottom:8px;
+  }
+
+  .shelf-head span{
+    font-size:0.94rem;
+    color:var(--ink-soft);
+  }
+
+  .shelf{
+    max-width:1000px;
+    margin:36px auto 0;
+    padding:0 24px 6px;
+    position:relative;
+    z-index:1;
+  }
+
+  .shelf-row{
+    display:flex;
+    gap:18px;
+    overflow-x:auto;
+    padding-bottom:24px;
+    scrollbar-width:thin;
+  }
+
+  .shelf-row::after{
+    content:"";
+    position:relative;
+    display:block;
+    min-width:1px;
+  }
+
+  .shelf-row + .shelf-plank{
+    height:10px;
+    background:linear-gradient(to bottom, rgba(31,46,35,0.14), rgba(31,46,35,0.04));
+    border-radius:4px;
+    margin-bottom:44px;
+  }
+
+  .spine-book{
+    flex:0 0 auto;
+    width:64px;
+    height:190px;
+    border-radius:4px;
+    display:flex;
+    align-items:flex-end;
+    justify-content:center;
+    padding-bottom:14px;
+    position:relative;
+    transition:transform 0.25s ease;
+    cursor:default;
+  }
+
+  .spine-book:hover{transform:translateY(-8px);}
+
+  .spine-book span{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.62rem;
+    color:rgba(255,255,255,0.85);
+    writing-mode:vertical-rl;
+    transform:rotate(180deg);
+    letter-spacing:0.02em;
+  }
+
+  .spine-book:nth-child(6n+1){background:var(--rose);}
+  .spine-book:nth-child(6n+2){background:var(--sage);}
+  .spine-book:nth-child(6n+3){background:var(--gold);}
+  .spine-book:nth-child(6n+4){background:var(--ink);}
+  .spine-book:nth-child(6n+5){background:#A8927A;}
+  .spine-book:nth-child(6n+6){background:#6E8B8A;}
+
+  /* FAVORITES LIST */
+  .favorites{
+    max-width:700px;
+    margin:70px auto 0;
+    padding:0 24px;
+    position:relative;
+    z-index:1;
+  }
+
+  .favorites-head{
+    text-align:center;
+    margin-bottom:28px;
+  }
+
+  .favorites-head h3{
+    font-family:'Fraunces',serif;
+    font-weight:500;
+    font-size:1.5rem;
+  }
+
+  .fav-item{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    gap:16px;
+    padding:16px 0;
+    border-bottom:1px solid rgba(31,46,35,0.08);
+  }
+
+  .fav-item:last-child{border-bottom:none;}
+
+  .fav-item .fav-title{
+    font-family:'Fraunces',serif;
+    font-size:1.05rem;
+    font-weight:500;
+  }
+
+  .fav-item .fav-why{
+    font-size:0.88rem;
+    color:var(--ink-soft);
+    text-align:right;
+    flex:0 0 45%;
+  }
+
+  @media (max-width:560px){
+    .fav-item{flex-direction:column;}
+    .fav-item .fav-why{text-align:left;flex:none;}
+  }
+
+  /* NOTE BOX */
+  .note{
+    max-width:1000px;
+    margin:70px auto 90px;
+    padding:0 24px;
+  }
+
+  .note-box{
+    background:#fff;
+    border:1px dashed rgba(201,161,90,0.5);
+    border-radius:14px;
+    padding:20px 22px;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.82rem;
+    line-height:1.6;
+    color:var(--ink-soft);
+  }
+
+  footer{
+    text-align:center;
+    padding:30px 24px 50px;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.74rem;
+    color:rgba(31,46,35,0.45);
+    position:relative;
+    z-index:1;
+  }
+
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html">Home</a>
+  <a href="story.html">My story</a>
+  <a href="flowers.html">Flowers</a>
+  <a href="ballet.html">Ballet</a>
+  <a href="reading.html" class="current">Reading</a>
+  <a href="projects.html">Projects</a>
+  <a href="say-hi.html">Say hi</a>
+</nav>
+
+<header class="page-head">
+  <p class="eyebrow">// reading</p>
+  <h1>Currently on my shelf</h1>
+  <p class="page-sub">What I'm reading now, what's lived on the shelf for years, and a few books I keep coming back to.</p>
+</header>
+
+<section class="current-read">
+  <div class="current-card">
+    <div class="book-cover">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5C4 5 4.5 4.5 6 4.5c2 0 4 1 6 2.5 2-1.5 4-2.5 6-2.5 1.5 0 2 .5 2 1v13c0-.5-.5-1-2-1-2 0-4 1-6 2.5-2-1.5-4-2.5-6-2.5-1.5 0-2 .5-2 1z"></path></svg>
+    </div>
+    <div>
+      <p class="t-label">Currently reading</p>
+      <h2 class="placeholder">[Book title]</h2>
+      <p class="author placeholder">[Author name]</p>
+      <p class="note-line placeholder">[A line or two on how it's going — are you loving it, is it slow, what made you pick it up]</p>
+    </div>
+  </div>
+</section>
+
+<div class="shelf-head">
+  <h3>The shelf</h3>
+  <span>Books I've kept, in no particular order</span>
+</div>
+
+<div class="shelf">
+  <div class="shelf-row">
+    <div class="spine-book"><span>[Title]</span></div>
+    <div class="spine-book"><span>[Title]</span></div>
+    <div class="spine-book"><span>[Title]</span></div>
+    <div class="spine-book"><span>[Title]</span></div>
+    <div class="spine-book"><span>[Title]</span></div>
+    <div class="spine-book"><span>[Title]</span></div>
+    <div class="spine-book"><span>[Title]</span></div>
+    <div class="spine-book"><span>[Title]</span></div>
+  </div>
+  <div class="shelf-plank"></div>
+</div>
+
+<section class="favorites">
+  <div class="favorites-head">
+    <h3>A few I keep recommending</h3>
+  </div>
+
+  <div class="fav-item">
+    <span class="fav-title placeholder">[Book title]</span>
+    <span class="fav-why placeholder">[Why it's stuck with you, in a few words]</span>
+  </div>
+  <div class="fav-item">
+    <span class="fav-title placeholder">[Book title]</span>
+    <span class="fav-why placeholder">[Why it's stuck with you]</span>
+  </div>
+  <div class="fav-item">
+    <span class="fav-title placeholder">[Book title]</span>
+    <span class="fav-why placeholder">[Why it's stuck with you]</span>
+  </div>
+</section>
+
+<div class="note">
+  <div class="note-box">
+    NOTE TO SELF — fill in the currently-reading card, swap the [Title] spans in .shelf-row for real book titles (add or remove .spine-book divs freely, the row scrolls horizontally if it overflows), and fill in the three favorites at the bottom. If you'd rather show real cover images instead of colored spines, an &lt;img&gt; can replace the .book-cover or .spine-book background. Delete this box when done.
+  </div>
+</div>
+
+<footer>[your name] · built with care</footer>
+
+</body>
+</html>
