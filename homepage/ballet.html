@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>[Your Name] — Ballet</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1F2E23;
+    --paper:#FAF6EF;
+    --rose:#C97B84;
+    --sage:#8FA482;
+    --gold:#C9A15A;
+    --ink-soft:#3C4B3F;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+
+  body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background-image:radial-gradient(circle at 1px 1px, rgba(31,46,35,0.035) 1px, transparent 0);
+    background-size:22px 22px;
+    pointer-events:none;
+    z-index:0;
+  }
+
+  a{color:inherit;text-decoration:none;}
+
+  /* NAV */
+  nav{
+    position:sticky;
+    top:0;
+    z-index:20;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:clamp(14px,3vw,34px);
+    padding:20px 24px;
+    background:rgba(250,246,239,0.86);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid rgba(31,46,35,0.08);
+    flex-wrap:wrap;
+  }
+
+  nav a{
+    font-size:0.86rem;
+    letter-spacing:0.04em;
+    font-weight:500;
+    color:var(--ink-soft);
+    position:relative;
+    padding:4px 2px;
+    transition:color 0.25s ease;
+  }
+
+  nav a.current{color:var(--ink);}
+
+  nav a::after{
+    content:"";
+    position:absolute;
+    left:0; right:0; bottom:-2px;
+    height:1px;
+    background:var(--rose);
+    transform:scaleX(0);
+    transform-origin:left;
+    transition:transform 0.3s ease;
+  }
+
+  nav a:hover::after,
+  nav a.current::after{transform:scaleX(1);}
+
+  /* PAGE HEADER */
+  .page-head{
+    max-width:720px;
+    margin:0 auto;
+    padding:80px 24px 20px;
+    text-align:center;
+    position:relative;
+    z-index:1;
+  }
+
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.72rem;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--rose);
+    margin-bottom:16px;
+  }
+
+  h1{
+    font-family:'Fraunces',serif;
+    font-weight:500;
+    font-size:clamp(2.2rem,5.5vw,3.4rem);
+    line-height:1.1;
+    letter-spacing:-0.01em;
+  }
+
+  .page-sub{
+    max-width:480px;
+    margin:18px auto 0;
+    font-size:1.02rem;
+    line-height:1.65;
+    color:var(--ink-soft);
+  }
+
+  .placeholder{color:var(--rose);font-style:italic;}
+
+  /* TIMELINE SPINE */
+  .history{
+    max-width:1040px;
+    margin:70px auto 0;
+    padding:0 24px;
+    position:relative;
+    z-index:1;
+  }
+
+  .spine{
+    position:relative;
+  }
+
+  .spine::before{
+    content:"";
+    position:absolute;
+    left:50%;
+    top:0;
+    bottom:0;
+    width:1.5px;
+    background:linear-gradient(to bottom, transparent, rgba(201,123,132,0.45) 6%, rgba(201,123,132,0.45) 94%, transparent);
+    transform:translateX(-50%);
+  }
+
+  @media (max-width:760px){
+    .spine::before{left:22px;}
+  }
+
+  .era{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:50px;
+    align-items:center;
+    position:relative;
+    padding:50px 0;
+  }
+
+  .era:first-child{padding-top:0;}
+
+  .era .dot{
+    position:absolute;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+    width:12px;
+    height:12px;
+    border-radius:50%;
+    background:var(--paper);
+    border:2.5px solid var(--rose);
+    z-index:2;
+  }
+
+  @media (max-width:760px){
+    .era{grid-template-columns:1fr;padding-left:52px;gap:16px;}
+    .era .dot{left:22px;}
+  }
+
+  .era-media{
+    background:linear-gradient(135deg, rgba(201,123,132,0.22), rgba(201,161,90,0.18));
+    border-radius:18px;
+    min-height:230px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+    overflow:hidden;
+  }
+
+  .era-media svg{width:44px;height:44px;stroke:var(--rose);opacity:0.65;}
+
+  .media-tag{
+    position:absolute;
+    bottom:12px;
+    left:12px;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.66rem;
+    background:rgba(255,255,255,0.85);
+    padding:4px 9px;
+    border-radius:20px;
+    color:var(--ink-soft);
+  }
+
+  .era-text .t-label{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.72rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--gold);
+    margin-bottom:8px;
+  }
+
+  .era-text h3{
+    font-family:'Fraunces',serif;
+    font-weight:500;
+    font-size:1.5rem;
+    margin-bottom:10px;
+  }
+
+  .era-text p{
+    font-size:0.98rem;
+    line-height:1.75;
+    color:var(--ink-soft);
+  }
+
+  /* reverse order on odd eras for zigzag, desktop only */
+  .era.reverse .era-media{order:2;}
+  .era.reverse .era-text{order:1;}
+  @media (max-width:760px){
+    .era.reverse .era-media{order:0;}
+    .era.reverse .era-text{order:0;}
+  }
+
+  /* STUDIO SECTION */
+  .studio-head{
+    max-width:1040px;
+    margin:90px auto 24px;
+    padding:0 24px;
+    text-align:center;
+    position:relative;
+    z-index:1;
+  }
+
+  .studio-head p.eyebrow{margin-bottom:10px;color:var(--sage);}
+
+  .studio-head h3{
+    font-family:'Fraunces',serif;
+    font-weight:500;
+    font-size:1.7rem;
+    margin-bottom:8px;
+  }
+
+  .studio-head span{
+    font-size:0.94rem;
+    color:var(--ink-soft);
+  }
+
+  .studio-grid{
+    max-width:800px;
+    margin:36px auto 0;
+    padding:0 24px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+    position:relative;
+    z-index:1;
+  }
+
+  @media (max-width:600px){ .studio-grid{grid-template-columns:1fr;} }
+
+  .studio-photo{
+    background:rgba(143,164,130,0.18);
+    border-radius:16px;
+    min-height:260px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+  }
+
+  .studio-photo svg{width:36px;height:36px;stroke:var(--sage);opacity:0.65;}
+
+  /* NOTE BOX */
+  .note{
+    max-width:1040px;
+    margin:60px auto 90px;
+    padding:0 24px;
+  }
+
+  .note-box{
+    background:#fff;
+    border:1px dashed rgba(201,161,90,0.5);
+    border-radius:14px;
+    padding:20px 22px;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.82rem;
+    line-height:1.6;
+    color:var(--ink-soft);
+  }
+
+  footer{
+    text-align:center;
+    padding:30px 24px 50px;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.74rem;
+    color:rgba(31,46,35,0.45);
+    position:relative;
+    z-index:1;
+  }
+
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html">Home</a>
+  <a href="story.html">My story</a>
+  <a href="flowers.html">Flowers</a>
+  <a href="ballet.html" class="current">Ballet</a>
+  <a href="reading.html">Reading</a>
+  <a href="projects.html">Projects</a>
+  <a href="say-hi.html">Say hi</a>
+</nav>
+
+<header class="page-head">
+  <p class="eyebrow">// ballet</p>
+  <h1>On stage and in the studio</h1>
+  <p class="page-sub">A history, more or less in order — the performances, the years in between, and the studio hours no one sees.</p>
+</header>
+
+<section class="history">
+  <div class="spine">
+
+    <div class="era">
+      <div class="dot"></div>
+      <div class="era-media">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M23 7l-7 5 7 5V7z"></path><rect x="1" y="5" width="15" height="14" rx="2"></rect></svg>
+        <span class="media-tag">[video or photo]</span>
+      </div>
+      <div class="era-text">
+        <p class="t-label">[Year / age]</p>
+        <h3 class="placeholder">[First stage — the earliest performance you remember]</h3>
+        <p class="placeholder">[What it felt like, what the piece was, what you remember most clearly — nerves, a mistake, a moment that landed]</p>
+      </div>
+    </div>
+
+    <div class="era reverse">
+      <div class="dot"></div>
+      <div class="era-media">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M23 7l-7 5 7 5V7z"></path><rect x="1" y="5" width="15" height="14" rx="2"></rect></svg>
+        <span class="media-tag">[video or photo]</span>
+      </div>
+      <div class="era-text">
+        <p class="t-label">[Year / age]</p>
+        <h3 class="placeholder">[The years of getting serious]</h3>
+        <p class="placeholder">[What changed — more hours, a new teacher, a harder role, a shift in how you thought about it]</p>
+      </div>
+    </div>
+
+    <div class="era">
+      <div class="dot"></div>
+      <div class="era-media">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M23 7l-7 5 7 5V7z"></path><rect x="1" y="5" width="15" height="14" rx="2"></rect></svg>
+        <span class="media-tag">[video or photo]</span>
+      </div>
+      <div class="era-text">
+        <p class="t-label">[Year]</p>
+        <h3 class="placeholder">[A performance you're proudest of]</h3>
+        <p class="placeholder">[Set the scene — the role, the production, why this one stuck with you]</p>
+      </div>
+    </div>
+
+    <div class="era reverse">
+      <div class="dot"></div>
+      <div class="era-media">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M23 7l-7 5 7 5V7z"></path><rect x="1" y="5" width="15" height="14" rx="2"></rect></svg>
+        <span class="media-tag">[video or photo]</span>
+      </div>
+      <div class="era-text">
+        <p class="t-label">Now</p>
+        <h3 class="placeholder">[Where ballet fits in your life today]</h3>
+        <p class="placeholder">[Still performing, still training, dancing for yourself now — whatever's true]</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="studio-head">
+  <p class="eyebrow">// behind it all</p>
+  <h3>In the studio</h3>
+  <span>The quiet part nobody films</span>
+</div>
+
+<div class="studio-grid">
+  <div class="studio-photo">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"></rect><circle cx="9" cy="9" r="2"></circle><path d="M21 15l-5-5L5 21"></path></svg>
+  </div>
+  <div class="studio-photo">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"></rect><circle cx="9" cy="9" r="2"></circle><path d="M21 15l-5-5L5 21"></path></svg>
+  </div>
+</div>
+
+<div class="note">
+  <div class="note-box">
+    NOTE TO SELF — each era block has an .era-media div; swap its &lt;svg&gt; placeholder for a real &lt;img&gt; or &lt;video controls&gt; tag once you have the file. Add or remove .era blocks (alternate with/without class="reverse" for the zigzag) to match how many chapters your story actually has. The two .studio-photo divs at the bottom are for your practice shots. Delete this box when done.
+  </div>
+</div>
+
+<footer>[your name] · built with care</footer>
+
+</body>
+</html>
