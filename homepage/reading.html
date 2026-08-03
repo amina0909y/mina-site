@@ -6,117 +6,9 @@
 <title>[Your Name] — Reading</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 <style>
-  :root{
-    --ink:#1F2E23;
-    --paper:#FAF6EF;
-    --rose:#C97B84;
-    --sage:#8FA482;
-    --gold:#C9A15A;
-    --ink-soft:#3C4B3F;
-  }
-
-  *{margin:0;padding:0;box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-
-  body{
-    background:var(--paper);
-    color:var(--ink);
-    font-family:'Inter',sans-serif;
-    -webkit-font-smoothing:antialiased;
-    overflow-x:hidden;
-  }
-
-  body::before{
-    content:"";
-    position:fixed;
-    inset:0;
-    background-image:radial-gradient(circle at 1px 1px, rgba(31,46,35,0.035) 1px, transparent 0);
-    background-size:22px 22px;
-    pointer-events:none;
-    z-index:0;
-  }
-
-  a{color:inherit;text-decoration:none;}
-
-  /* NAV */
-  nav{
-    position:sticky;
-    top:0;
-    z-index:20;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:clamp(14px,3vw,34px);
-    padding:20px 24px;
-    background:rgba(250,246,239,0.86);
-    backdrop-filter:blur(10px);
-    border-bottom:1px solid rgba(31,46,35,0.08);
-    flex-wrap:wrap;
-  }
-
-  nav a{
-    font-size:0.86rem;
-    letter-spacing:0.04em;
-    font-weight:500;
-    color:var(--ink-soft);
-    position:relative;
-    padding:4px 2px;
-    transition:color 0.25s ease;
-  }
-
-  nav a.current{color:var(--ink);}
-
-  nav a::after{
-    content:"";
-    position:absolute;
-    left:0; right:0; bottom:-2px;
-    height:1px;
-    background:var(--rose);
-    transform:scaleX(0);
-    transform-origin:left;
-    transition:transform 0.3s ease;
-  }
-
-  nav a:hover::after,
-  nav a.current::after{transform:scaleX(1);}
-
-  /* PAGE HEADER */
-  .page-head{
-    max-width:720px;
-    margin:0 auto;
-    padding:80px 24px 20px;
-    text-align:center;
-    position:relative;
-    z-index:1;
-  }
-
-  .eyebrow{
-    font-family:'IBM Plex Mono',monospace;
-    font-size:0.72rem;
-    letter-spacing:0.18em;
-    text-transform:uppercase;
-    color:var(--ink-soft);
-    margin-bottom:16px;
-  }
-
-  h1{
-    font-family:'Fraunces',serif;
-    font-weight:500;
-    font-size:clamp(2.2rem,5.5vw,3.4rem);
-    line-height:1.1;
-    letter-spacing:-0.01em;
-  }
-
-  .page-sub{
-    max-width:480px;
-    margin:18px auto 0;
-    font-size:1.02rem;
-    line-height:1.65;
-    color:var(--ink-soft);
-  }
-
-  .placeholder{color:var(--rose);font-style:italic;}
+  .eyebrow{color:var(--ink-soft);}
 
   /* CURRENTLY READING */
   .current-read{
@@ -317,34 +209,7 @@
   }
 
   /* NOTE BOX */
-  .note{
-    max-width:1000px;
-    margin:70px auto 90px;
-    padding:0 24px;
-  }
-
-  .note-box{
-    background:#fff;
-    border:1px dashed rgba(201,161,90,0.5);
-    border-radius:14px;
-    padding:20px 22px;
-    font-family:'IBM Plex Mono',monospace;
-    font-size:0.82rem;
-    line-height:1.6;
-    color:var(--ink-soft);
-  }
-
-  footer{
-    text-align:center;
-    padding:30px 24px 50px;
-    font-family:'IBM Plex Mono',monospace;
-    font-size:0.74rem;
-    color:rgba(31,46,35,0.45);
-    position:relative;
-    z-index:1;
-  }
-
-  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} }
+  .note{max-width:1000px;}
 </style>
 </head>
 <body>
