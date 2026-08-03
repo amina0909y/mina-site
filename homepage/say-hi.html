@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>[Your Name] — Say Hi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1F2E23;
+    --paper:#FAF6EF;
+    --rose:#C97B84;
+    --sage:#8FA482;
+    --gold:#C9A15A;
+    --ink-soft:#3C4B3F;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+    min-height:100vh;
+  }
+
+  body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background-image:radial-gradient(circle at 1px 1px, rgba(31,46,35,0.035) 1px, transparent 0);
+    background-size:22px 22px;
+    pointer-events:none;
+    z-index:0;
+  }
+
+  a{color:inherit;text-decoration:none;}
+
+  /* NAV */
+  nav{
+    position:sticky;
+    top:0;
+    z-index:20;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:clamp(14px,3vw,34px);
+    padding:20px 24px;
+    background:rgba(250,246,239,0.86);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid rgba(31,46,35,0.08);
+    flex-wrap:wrap;
+  }
+
+  nav a{
+    font-size:0.86rem;
+    letter-spacing:0.04em;
+    font-weight:500;
+    color:var(--ink-soft);
+    position:relative;
+    padding:4px 2px;
+    transition:color 0.25s ease;
+  }
+
+  nav a.current{color:var(--ink);}
+
+  nav a::after{
+    content:"";
+    position:absolute;
+    left:0; right:0; bottom:-2px;
+    height:1px;
+    background:var(--rose);
+    transform:scaleX(0);
+    transform-origin:left;
+    transition:transform 0.3s ease;
+  }
+
+  nav a:hover::after,
+  nav a.current::after{transform:scaleX(1);}
+
+  /* MAIN */
+  main{
+    max-width:600px;
+    margin:0 auto;
+    padding:100px 24px 60px;
+    text-align:center;
+    position:relative;
+    z-index:1;
+    min-height:70vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+  }
+
+  .stem-svg{
+    position:absolute;
+    top:0; left:50%;
+    transform:translateX(-50%);
+    width:340px;
+    height:100%;
+    z-index:0;
+    pointer-events:none;
+    opacity:0.4;
+  }
+
+  .stem-path{
+    fill:none;
+    stroke:var(--rose);
+    stroke-width:1.3;
+    stroke-linecap:round;
+    stroke-dasharray:900;
+    stroke-dashoffset:900;
+    animation:draw 2s ease forwards 0.2s;
+  }
+
+  @keyframes draw{ to { stroke-dashoffset:0; } }
+
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.72rem;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--rose);
+    margin-bottom:18px;
+    position:relative;
+    z-index:1;
+  }
+
+  h1{
+    font-family:'Fraunces',serif;
+    font-weight:500;
+    font-size:clamp(2.4rem,6vw,3.6rem);
+    line-height:1.1;
+    letter-spacing:-0.01em;
+    position:relative;
+    z-index:1;
+  }
+
+  .lead{
+    max-width:440px;
+    margin:20px auto 0;
+    font-size:1.04rem;
+    line-height:1.7;
+    color:var(--ink-soft);
+    position:relative;
+    z-index:1;
+  }
+
+  .placeholder{color:var(--rose);font-style:italic;}
+
+  /* EMAIL CARD */
+  .email-card{
+    margin:44px auto 0;
+    display:inline-flex;
+    align-items:center;
+    gap:14px;
+    background:#fff;
+    border:1px solid rgba(31,46,35,0.1);
+    border-radius:100px;
+    padding:16px 26px;
+    position:relative;
+    z-index:1;
+    transition:transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .email-card:hover{
+    transform:translateY(-3px);
+    box-shadow:0 14px 30px rgba(31,46,35,0.1);
+  }
+
+  .email-card .icon{
+    width:34px;height:34px;
+    border-radius:50%;
+    background:rgba(201,123,132,0.16);
+    display:flex;align-items:center;justify-content:center;
+    flex-shrink:0;
+  }
+
+  .email-card .icon svg{width:16px;height:16px;stroke:var(--rose);}
+
+  .email-card span{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.98rem;
+    color:var(--ink);
+  }
+
+  /* SECONDARY LINKS */
+  .secondary{
+    margin-top:32px;
+    display:flex;
+    justify-content:center;
+    gap:22px;
+    flex-wrap:wrap;
+    position:relative;
+    z-index:1;
+  }
+
+  .secondary a{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.82rem;
+    color:var(--ink-soft);
+    padding-bottom:2px;
+    border-bottom:1px solid transparent;
+    transition:border-color 0.25s ease, color 0.25s ease;
+  }
+
+  .secondary a:hover{
+    color:var(--ink);
+    border-color:var(--sage);
+  }
+
+  /* NOTE BOX */
+  .note{
+    max-width:600px;
+    margin:60px auto 0;
+    padding:0 24px 90px;
+    position:relative;
+    z-index:1;
+  }
+
+  .note-box{
+    background:#fff;
+    border:1px dashed rgba(201,161,90,0.5);
+    border-radius:14px;
+    padding:20px 22px;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.82rem;
+    line-height:1.6;
+    color:var(--ink-soft);
+    text-align:left;
+  }
+
+  footer{
+    text-align:center;
+    padding:0 24px 50px;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.74rem;
+    color:rgba(31,46,35,0.45);
+    position:relative;
+    z-index:1;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .stem-path{animation:none;stroke-dashoffset:0;}
+    html{scroll-behavior:auto;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html">Home</a>
+  <a href="story.html">My story</a>
+  <a href="flowers.html">Flowers</a>
+  <a href="ballet.html">Ballet</a>
+  <a href="reading.html">Reading</a>
+  <a href="projects.html">Projects</a>
+  <a href="say-hi.html" class="current">Say hi</a>
+</nav>
+
+<main>
+  <svg class="stem-svg" viewBox="0 0 300 500" preserveAspectRatio="none">
+    <path class="stem-path" d="M 150 20 C 90 100, 210 180, 130 260 C 60 330, 200 380, 150 480" />
+  </svg>
+
+  <p class="eyebrow">// say hi</p>
+  <h1>Let's get in touch</h1>
+  <p class="lead placeholder">[A warm closing line — something like "Whether it's about ballet, plants, books, or code, I'd love to hear from you."]</p>
+
+  <a class="email-card" href="mailto:your-email@example.com">
+    <span class="icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="M2 7l10 6 10-6"></path></svg>
+    </span>
+    <span class="placeholder">your-email@example.com</span>
+  </a>
+
+  <div class="secondary">
+    <a href="#" class="placeholder">[optional: LinkedIn]</a>
+    <a href="#" class="placeholder">[optional: Instagram]</a>
+  </div>
+</main>
+
+<div class="note">
+  <div class="note-box">
+    NOTE TO SELF — replace both instances of your-email@example.com (the mailto: link AND the visible text) with your dedicated contact email. The two secondary links are optional — delete the whole .secondary div if you don't want any social links, or keep just one. Delete this note box when done.
+  </div>
+</div>
+
+<footer>[your name] · built with care</footer>
+
+</body>
+</html>
