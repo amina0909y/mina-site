@@ -81,6 +81,15 @@
     color:var(--ink-soft);
   }
 
+  .featured-img img,
+  .piece-img img,
+  .also-img img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+  }
+
   @media (max-width:720px){
     .featured-card{grid-template-columns:1fr;}
   }
@@ -137,10 +146,11 @@
   }
 
   .piece-img{
-    height:160px;
+    height:210px;
     display:flex;
     align-items:center;
     justify-content:center;
+    overflow:hidden;
   }
 
   .piece-img svg{width:32px;height:32px;opacity:0.6;}
@@ -212,36 +222,36 @@
     margin:36px auto 0;
     padding:0 24px;
     display:grid;
-    grid-template-columns:1fr 1fr;
+    grid-template-columns:1fr;
     gap:22px;
     position:relative;
     z-index:1;
   }
-
-  @media (max-width:680px){ .also-grid{grid-template-columns:1fr;} }
 
   .also-card{
     background:#fff;
     border:1px solid rgba(31,46,35,0.08);
     border-radius:18px;
     overflow:hidden;
+    display:grid;
+    grid-template-columns:220px 1fr;
   }
 
   .also-img{
-    min-height:200px;
+    min-height:180px;
     display:flex;
     align-items:center;
     justify-content:center;
+    overflow:hidden;
   }
 
   .also-img svg{width:36px;height:36px;opacity:0.65;}
 
-  .also-card:nth-child(1) .also-img{background:rgba(201,161,90,0.18);}
-  .also-card:nth-child(1) .also-img svg{stroke:var(--gold);}
-  .also-card:nth-child(2) .also-img{background:rgba(31,46,35,0.07);}
-  .also-card:nth-child(2) .also-img svg{stroke:var(--ink);}
+  @media (max-width:560px){
+    .also-card{grid-template-columns:1fr;}
+  }
 
-  .also-body{padding:22px 24px 26px;}
+  .also-body{padding:22px 24px 26px;display:flex;flex-direction:column;justify-content:center;}
 
   .also-body .t-label{
     font-family:'IBM Plex Mono',monospace;
@@ -291,75 +301,65 @@
 <section class="featured">
   <div class="featured-card">
     <div class="featured-img">
-      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2.6"></circle><path d="M12 3c1.8 0 3 1.5 3 3s-1.2 3-3 3-3-1.5-3-3 1.2-3 3-3zM12 15c1.8 0 3 1.5 3 3s-1.2 3-3 3-3-1.5-3-3 1.2-3 3-3zM21 12c0 1.8-1.5 3-3 3s-3-1.2-3-3 1.5-3 3-3 3 1.2 3 3zM9 12c0 1.8-1.5 3-3 3s-3-1.2-3-3 1.5-3 3-3 3 1.2 3 3z"></path></svg>
-      <span class="img-tag">[replace with photo]</span>
+      <img src="images/paper-flower-vase-featured.jpg" alt="Framed paper flower arrangement in a vase, on a blue background">
     </div>
     <div class="featured-text">
       <p class="t-label">A recent favorite</p>
-      <h2 class="placeholder">[Name or description of the paper flower piece]</h2>
-      <p class="placeholder">[A few sentences on this one — the flower it's based on, how long it took, what made it a favorite, any part that was tricky to get right.]</p>
+      <h2 class="placeholder">[Name this piece, if you want — e.g. what's in the vase]</h2>
+      <p class="placeholder">[A few sentences on this one — the flowers you chose, how long it took, what made it a favorite]</p>
     </div>
   </div>
 </section>
 
 <div class="gallery-head">
   <h3>The paper flower collection</h3>
-  <span>[N] pieces and counting</span>
+  <span>Since April 2025</span>
 </div>
 
 <div class="gallery">
 
   <div class="piece-card">
-    <div class="piece-img"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21V9M12 9c0-3.5-2-6-6-6 0 3.5 2 6 6 6zm0 0c0-3.5 2-6 6-6 0 3.5-2 6-6 6z"></path></svg></div>
+    <div class="piece-img"><img src="images/paper-flower-sunflower-first.jpg" alt="A yellow paper sunflower"></div>
     <div class="piece-body">
-      <p class="b-label">made [month/year]</p>
-      <h4 class="placeholder">[Piece name — e.g. the flower it's modeled on]</h4>
-      <p class="placeholder">[One line about it — the paper used, the technique, who it was for]</p>
+      <p class="b-label">The first one</p>
+      <h4>Sunflower</h4>
+      <p class="placeholder">[Optional — a line about making your very first piece]</p>
     </div>
   </div>
 
   <div class="piece-card">
-    <div class="piece-img"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21V9M12 9c0-3.5-2-6-6-6 0 3.5 2 6 6 6zm0 0c0-3.5 2-6 6-6 0 3.5-2 6-6 6z"></path></svg></div>
+    <div class="piece-img"><img src="images/paper-flower-lily-dome.jpg" alt="A pink paper lily under a glass dome"></div>
     <div class="piece-body">
       <p class="b-label">made [month/year]</p>
-      <h4 class="placeholder">[Piece name]</h4>
+      <h4 class="placeholder">[Lily under glass — name it if you'd like]</h4>
+      <p class="placeholder">[One line about it — the dome display, the technique, who it was for]</p>
+    </div>
+  </div>
+
+  <div class="piece-card">
+    <div class="piece-img"><img src="images/paper-flower-wreath.jpg" alt="A crescent wreath of teal and white paper roses in a frame"></div>
+    <div class="piece-body">
+      <p class="b-label">made [month/year]</p>
+      <h4 class="placeholder">[Crescent wreath — name it if you'd like]</h4>
       <p class="placeholder">[One line about it]</p>
     </div>
   </div>
 
   <div class="piece-card">
-    <div class="piece-img"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21V9M12 9c0-3.5-2-6-6-6 0 3.5 2 6 6 6zm0 0c0-3.5 2-6 6-6 0 3.5-2 6-6 6z"></path></svg></div>
+    <div class="piece-img"><img src="images/paper-flower-yellow-lilies.jpg" alt="Two large yellow paper lilies"></div>
     <div class="piece-body">
       <p class="b-label">made [month/year]</p>
-      <h4 class="placeholder">[Piece name]</h4>
+      <h4 class="placeholder">[Yellow lilies — name it if you'd like]</h4>
       <p class="placeholder">[One line about it]</p>
     </div>
   </div>
 
   <div class="piece-card">
-    <div class="piece-img"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21V9M12 9c0-3.5-2-6-6-6 0 3.5 2 6 6 6zm0 0c0-3.5 2-6 6-6 0 3.5-2 6-6 6z"></path></svg></div>
+    <div class="piece-img"><img src="images/paper-flower-sunflower-field.jpg" alt="A framed piece with paper sunflowers and cosmos over a painted sunset sky with bees"></div>
     <div class="piece-body">
       <p class="b-label">made [month/year]</p>
-      <h4 class="placeholder">[Piece name]</h4>
-      <p class="placeholder">[One line about it]</p>
-    </div>
-  </div>
-
-  <div class="piece-card">
-    <div class="piece-img"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21V9M12 9c0-3.5-2-6-6-6 0 3.5 2 6 6 6zm0 0c0-3.5 2-6 6-6 0 3.5-2 6-6 6z"></path></svg></div>
-    <div class="piece-body">
-      <p class="b-label">made [month/year]</p>
-      <h4 class="placeholder">[Piece name]</h4>
-      <p class="placeholder">[One line about it]</p>
-    </div>
-  </div>
-
-  <div class="piece-card">
-    <div class="piece-img"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21V9M12 9c0-3.5-2-6-6-6 0 3.5 2 6 6 6zm0 0c0-3.5 2-6 6-6 0 3.5-2 6-6 6z"></path></svg></div>
-    <div class="piece-body">
-      <p class="b-label">made [month/year]</p>
-      <h4 class="placeholder">[Piece name]</h4>
-      <p class="placeholder">[One line about it]</p>
+      <h4 class="placeholder">[Sunflower field with bees — name it if you'd like]</h4>
+      <p class="placeholder">[One line about it — the painted background, the bees, what made this one come together]</p>
     </div>
   </div>
 
@@ -367,22 +367,66 @@
 
 <div class="also-head">
   <p class="eyebrow">// also</p>
-  <h3>Drawing &amp; photography</h3>
+  <h3>Drawing &amp; painting</h3>
   <span>Smaller habits, still worth a corner of the page</span>
 </div>
 
 <div class="also-grid">
+
   <div class="also-card">
-    <div class="also-img">
-      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3zM18 12l-9.5 9.5L2 20l2-6.5L14 3l4 4z"></path></svg>
-    </div>
+    <div class="also-img"><img src="images/drawing-depression-piece.jpg" alt="A watercolor and ink piece with a crying eye, a bare tree, and two figures in a landscape"></div>
     <div class="also-body">
-      <p class="t-label">Drawing</p>
-      <h4 class="placeholder">[A line about what you draw and how often]</h4>
-      <p class="placeholder">[A sentence or two — sketchbook habit, favorite subject, medium of choice]</p>
+      <p class="t-label">Watercolor &amp; ink</p>
+      <h4 class="placeholder">[Title, if it has one]</h4>
+      <p class="placeholder">[This one's from a hard stretch — up to you whether to say that here, say something else, or leave it to speak for itself. Also up to you whether to keep it on the page at all.]</p>
     </div>
   </div>
 
+  <div class="also-card">
+    <div class="also-img"><img src="images/drawing-hummingbird.jpg" alt="A painted hummingbird among small red flowers"></div>
+    <div class="also-body">
+      <p class="t-label">Painting</p>
+      <h4 class="placeholder">[Hummingbird — name it if you'd like]</h4>
+      <p class="placeholder">[A line about it — the medium, what drew you to this subject]</p>
+    </div>
+  </div>
+
+  <div class="also-card">
+    <div class="also-img"><img src="images/drawing-cat-sketchbook.jpg" alt="A marker illustration of a cat resting against a colorful village backdrop, in a travel sketchbook"></div>
+    <div class="also-body">
+      <p class="t-label">Marker, travel sketchbook</p>
+      <h4 class="placeholder">[Where was this? A cat you met somewhere, maybe]</h4>
+      <p class="placeholder">[A line about the sketchbook habit, or this page specifically]</p>
+    </div>
+  </div>
+
+  <div class="also-card">
+    <div class="also-img"><img src="images/drawing-butterfly.jpg" alt="A detailed marker illustration of a monarch butterfly on an orange flower"></div>
+    <div class="also-body">
+      <p class="t-label">Marker illustration</p>
+      <h4 class="placeholder">[Monarch on a zinnia — name it if you'd like]</h4>
+      <p class="placeholder">[A line about it]</p>
+    </div>
+  </div>
+
+  <div class="also-card">
+    <div class="also-img"><img src="images/drawing-turtle.jpg" alt="An acrylic painting of a sea turtle swimming among coral"></div>
+    <div class="also-body">
+      <p class="t-label">Painting</p>
+      <h4 class="placeholder">[Sea turtle — name it if you'd like]</h4>
+      <p class="placeholder">[A line about it]</p>
+    </div>
+  </div>
+
+</div>
+
+<div class="also-head">
+  <p class="eyebrow">// also</p>
+  <h3>Photography</h3>
+  <span>Still to come</span>
+</div>
+
+<div class="also-grid">
   <div class="also-card">
     <div class="also-img">
       <svg viewBox="0 0 24 24" fill="none" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"></rect><circle cx="9" cy="9" r="2"></circle><path d="M21 15l-5-5L5 21"></path></svg>
@@ -390,7 +434,7 @@
     <div class="also-body">
       <p class="t-label">Photography</p>
       <h4 class="placeholder">[A line about what you like to photograph]</h4>
-      <p class="placeholder">[A sentence or two — what draws your eye, what camera or phone you use, a favorite shot]</p>
+      <p class="placeholder">[A sentence or two — what draws your eye, what camera or phone you use, a favorite shot. Add a real photo to .also-img when you have one.]</p>
     </div>
   </div>
 </div>
