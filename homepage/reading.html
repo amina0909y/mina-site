@@ -138,7 +138,7 @@
     padding-bottom:14px;
     position:relative;
     transition:transform 0.25s ease;
-    cursor:default;
+    cursor:pointer;
     overflow:hidden;
   }
 
@@ -168,6 +168,101 @@
   .spine-book:nth-child(6n+4){background:var(--ink);}
   .spine-book:nth-child(6n+5){background:#A8927A;}
   .spine-book:nth-child(6n+6){background:#6E8B8A;}
+
+  /* BOOK DETAIL MODAL */
+  .book-modal-overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(31,46,35,0.55);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:24px;
+    z-index:50;
+    opacity:0;
+    pointer-events:none;
+    transition:opacity 0.25s ease;
+  }
+
+  .book-modal-overlay.open{
+    opacity:1;
+    pointer-events:auto;
+  }
+
+  .book-modal-card{
+    background:var(--paper);
+    border-radius:20px;
+    padding:36px 34px;
+    max-width:440px;
+    width:100%;
+    max-height:80vh;
+    overflow-y:auto;
+    position:relative;
+    transform:scale(0.94) translateY(8px);
+    transition:transform 0.25s ease;
+    box-shadow:0 30px 60px rgba(31,46,35,0.3);
+  }
+
+  .book-modal-overlay.open .book-modal-card{
+    transform:scale(1) translateY(0);
+  }
+
+  .book-modal-close{
+    position:absolute;
+    top:16px;
+    right:16px;
+    width:32px;
+    height:32px;
+    border-radius:50%;
+    border:none;
+    background:rgba(31,46,35,0.06);
+    color:var(--ink);
+    font-size:1.1rem;
+    line-height:1;
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    transition:background 0.2s ease;
+  }
+
+  .book-modal-close:hover{background:rgba(31,46,35,0.12);}
+
+  .book-modal-label{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.72rem;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--gold);
+    margin-bottom:10px;
+  }
+
+  #book-modal-title{
+    font-family:'Fraunces',serif;
+    font-weight:500;
+    font-size:1.5rem;
+    line-height:1.25;
+    margin-bottom:22px;
+    padding-right:20px;
+  }
+
+  .book-modal-section{margin-bottom:20px;}
+  .book-modal-section:last-child{margin-bottom:0;}
+
+  .book-modal-heading{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.7rem;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--sage);
+    margin-bottom:6px;
+  }
+
+  .book-modal-section p:not(.book-modal-heading){
+    font-size:0.98rem;
+    line-height:1.65;
+    color:var(--ink-soft);
+  }
 
   /* FAVORITES LIST */
   .favorites{
@@ -261,25 +356,25 @@
 
 <div class="shelf">
   <div class="shelf-row">
-    <div class="spine-book"><span>The 100 Year Life</span></div>
-    <div class="spine-book"><span class="jp">2040年の未来予測</span></div>
-    <div class="spine-book"><span>Automatic Habit</span></div>
-    <div class="spine-book"><span>The Defending Decade</span></div>
-    <div class="spine-book"><span>Die with Zero</span></div>
-    <div class="spine-book"><span>The Digital Money Wars</span></div>
-    <div class="spine-book"><span class="jp">ETFはこの7本を買いなさい</span></div>
-    <div class="spine-book"><span>Four Thousand Weeks</span></div>
-    <div class="spine-book"><span>Give and Take</span></div>
-    <div class="spine-book"><span>Influence</span></div>
-    <div class="spine-book"><span>Just Keep Buying</span></div>
-    <div class="spine-book"><span>The New Psychology of Success</span></div>
-    <div class="spine-book"><span>Psychology of Money</span></div>
-    <div class="spine-book"><span>Quiet</span></div>
-    <div class="spine-book"><span>So Can You</span></div>
-    <div class="spine-book"><span class="jp">一生リバウンドしないパレオダイエットの教科書</span></div>
-    <div class="spine-book"><span class="jp">科学的な適職</span></div>
-    <div class="spine-book"><span class="jp">神メンタル</span></div>
-    <div class="spine-book"><span class="jp">苦しかったときの話をしようか</span></div>
+    <div class="spine-book" onclick="openBook('The 100 Year Life')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openBook('The 100 Year Life')}"><span>The 100 Year Life</span></div>
+    <div class="spine-book" onclick="openBook('2040年の未来予測')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openBook('2040年の未来予測')}"><span class="jp">2040年の未来予測</span></div>
+    <div class="spine-book" onclick="openBook('Automatic Habit')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openBook('Automatic Habit')}"><span>Automatic Habit</span></div>
+    <div class="spine-book" onclick="openBook('The Defending Decade')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openBook('The Defending Decade')}"><span>The Defending Decade</span></div>
+    <div class="spine-book" onclick="openBook('Die with Zero')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openBook('Die with Zero')}"><span>Die with Zero</span></div>
+    <div class="spine-book" onclick="openBook('The Digital Money Wars')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openBook('The Digital Money Wars')}"><span>The Digital Money Wars</span></div>
+    <div class="spine-book" onclick="openBook('ETFはこの7本を買いなさい')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openBook('ETFはこの7本を買いなさい')}"><span class="jp">ETFはこの7本を買いなさい</span></div>
+    <div class="spine-book" onclick="openBook('Four Thousand Weeks')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openBook('Four Thousand Weeks')}"><span>Four Thousand Weeks</span></div>
+    <div class="spine-book" onclick="openBook('Give and Take')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openBook('Give and Take')}"><span>Give and Take</span></div>
+    <div class="spine-book" onclick="openBook('Influence')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openBook('Influence')}"><span>Influence</span></div>
+    <div class="spine-book" onclick="openBook('Just Keep Buying')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openBook('Just Keep Buying')}"><span>Just Keep Buying</span></div>
+    <div class="spine-book" onclick="openBook('The New Psychology of Success')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openBook('The New Psychology of Success')}"><span>The New Psychology of Success</span></div>
+    <div class="spine-book" onclick="openBook('Psychology of Money')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openBook('Psychology of Money')}"><span>Psychology of Money</span></div>
+    <div class="spine-book" onclick="openBook('Quiet')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openBook('Quiet')}"><span>Quiet</span></div>
+    <div class="spine-book" onclick="openBook('So Can You')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openBook('So Can You')}"><span>So Can You</span></div>
+    <div class="spine-book" onclick="openBook('一生リバウンドしないパレオダイエットの教科書')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openBook('一生リバウンドしないパレオダイエットの教科書')}"><span class="jp">一生リバウンドしないパレオダイエットの教科書</span></div>
+    <div class="spine-book" onclick="openBook('科学的な適職')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openBook('科学的な適職')}"><span class="jp">科学的な適職</span></div>
+    <div class="spine-book" onclick="openBook('神メンタル')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openBook('神メンタル')}"><span class="jp">神メンタル</span></div>
+    <div class="spine-book" onclick="openBook('苦しかったときの話をしようか')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openBook('苦しかったときの話をしようか')}"><span class="jp">苦しかったときの話をしようか</span></div>
   </div>
   <div class="shelf-plank"></div>
 </div>
@@ -318,6 +413,64 @@
 </div>
 
 <footer>[your name] · built with care</footer>
+
+<div class="book-modal-overlay" id="book-modal" onclick="if(event.target===this)closeBookModal()">
+  <div class="book-modal-card">
+    <button class="book-modal-close" onclick="closeBookModal()" aria-label="Close">&times;</button>
+    <p class="book-modal-label">From the shelf</p>
+    <h3 id="book-modal-title"></h3>
+    <div class="book-modal-section">
+      <p class="book-modal-heading">The brief</p>
+      <p id="book-modal-brief"></p>
+    </div>
+    <div class="book-modal-section">
+      <p class="book-modal-heading">How it felt</p>
+      <p id="book-modal-feeling"></p>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Fill in a real brief + feeling for each book below. Anything left as
+  // the default placeholder will show generic filler text in the popup.
+  const bookNotes = {
+    "The 100 Year Life": { brief: "[What this book is about, in a sentence or two]", feeling: "[How it made you feel, or what you took from it]" },
+    "2040年の未来予測": { brief: "[What this book is about, in a sentence or two]", feeling: "[How it made you feel, or what you took from it]" },
+    "Automatic Habit": { brief: "[What this book is about, in a sentence or two]", feeling: "[How it made you feel, or what you took from it]" },
+    "The Defending Decade": { brief: "[What this book is about, in a sentence or two]", feeling: "[How it made you feel, or what you took from it]" },
+    "Die with Zero": { brief: "[What this book is about, in a sentence or two]", feeling: "[How it made you feel, or what you took from it]" },
+    "The Digital Money Wars": { brief: "[What this book is about, in a sentence or two]", feeling: "[How it made you feel, or what you took from it]" },
+    "ETFはこの7本を買いなさい": { brief: "[What this book is about, in a sentence or two]", feeling: "[How it made you feel, or what you took from it]" },
+    "Four Thousand Weeks": { brief: "[What this book is about, in a sentence or two]", feeling: "[How it made you feel, or what you took from it]" },
+    "Give and Take": { brief: "[What this book is about, in a sentence or two]", feeling: "[How it made you feel, or what you took from it]" },
+    "Influence": { brief: "[What this book is about, in a sentence or two]", feeling: "[How it made you feel, or what you took from it]" },
+    "Just Keep Buying": { brief: "[What this book is about, in a sentence or two]", feeling: "[How it made you feel, or what you took from it]" },
+    "The New Psychology of Success": { brief: "[What this book is about, in a sentence or two]", feeling: "[How it made you feel, or what you took from it]" },
+    "Psychology of Money": { brief: "[What this book is about, in a sentence or two]", feeling: "[How it made you feel, or what you took from it]" },
+    "Quiet": { brief: "[What this book is about, in a sentence or two]", feeling: "[How it made you feel, or what you took from it]" },
+    "So Can You": { brief: "[What this book is about, in a sentence or two]", feeling: "[How it made you feel, or what you took from it]" },
+    "一生リバウンドしないパレオダイエットの教科書": { brief: "[What this book is about, in a sentence or two]", feeling: "[How it made you feel, or what you took from it]" },
+    "科学的な適職": { brief: "[What this book is about, in a sentence or two]", feeling: "[How it made you feel, or what you took from it]" },
+    "神メンタル": { brief: "[What this book is about, in a sentence or two]", feeling: "[How it made you feel, or what you took from it]" },
+    "苦しかったときの話をしようか": { brief: "[What this book is about, in a sentence or two]", feeling: "[How it made you feel, or what you took from it]" }
+  };
+
+  function openBook(title) {
+    const data = bookNotes[title] || { brief: "[Add a note for this one]", feeling: "[Add a note for this one]" };
+    document.getElementById('book-modal-title').textContent = title;
+    document.getElementById('book-modal-brief').textContent = data.brief;
+    document.getElementById('book-modal-feeling').textContent = data.feeling;
+    document.getElementById('book-modal').classList.add('open');
+  }
+
+  function closeBookModal() {
+    document.getElementById('book-modal').classList.remove('open');
+  }
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeBookModal();
+  });
+</script>
 
 </body>
 </html>
