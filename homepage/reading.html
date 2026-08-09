@@ -130,7 +130,7 @@
   .spine-book{
     flex:0 0 auto;
     width:64px;
-    height:190px;
+    height:230px;
     border-radius:4px;
     display:flex;
     align-items:flex-end;
@@ -139,13 +139,14 @@
     position:relative;
     transition:transform 0.25s ease;
     cursor:default;
+    overflow:hidden;
   }
 
   .spine-book:hover{transform:translateY(-8px);}
 
   .spine-book span{
     font-family:'IBM Plex Mono',monospace;
-    font-size:0.62rem;
+    font-size:0.56rem;
     color:rgba(255,255,255,0.85);
     writing-mode:vertical-rl;
     transform:rotate(180deg);
@@ -217,7 +218,7 @@
 <nav>
   <a href="index.html">Home</a>
   <a href="story.html">My story</a>
-  <a href="flowers.html">Flowers</a>
+  <a href="art.html">My Art</a>
   <a href="ballet.html">Ballet</a>
   <a href="reading.html" class="current">Reading</a>
   <a href="projects.html">Projects</a>
@@ -237,28 +238,39 @@
     </div>
     <div>
       <p class="t-label">Currently reading</p>
-      <h2 class="placeholder">[Book title]</h2>
-      <p class="author placeholder">[Author name]</p>
-      <p class="note-line placeholder">[A line or two on how it's going — are you loving it, is it slow, what made you pick it up]</p>
+      <h2>Designing Your Life</h2>
+      <p class="author">Bill Burnett &amp; Dave Evans</p>
+      <p class="note-line placeholder">[A line or two on how it's going — felt like the right pick while figuring out what's next after CS, or whatever's true]</p>
     </div>
   </div>
 </section>
 
 <div class="shelf-head">
   <h3>The shelf</h3>
-  <span>Books I've kept, in no particular order</span>
+  <span>Alphabetical order</span>
 </div>
 
 <div class="shelf">
   <div class="shelf-row">
-    <div class="spine-book"><span>[Title]</span></div>
-    <div class="spine-book"><span>[Title]</span></div>
-    <div class="spine-book"><span>[Title]</span></div>
-    <div class="spine-book"><span>[Title]</span></div>
-    <div class="spine-book"><span>[Title]</span></div>
-    <div class="spine-book"><span>[Title]</span></div>
-    <div class="spine-book"><span>[Title]</span></div>
-    <div class="spine-book"><span>[Title]</span></div>
+    <div class="spine-book"><span>The 100 Year Life</span></div>
+    <div class="spine-book"><span>2040年の未来予測</span></div>
+    <div class="spine-book"><span>Automatic Habit</span></div>
+    <div class="spine-book"><span>The Defending Decade</span></div>
+    <div class="spine-book"><span>Die with Zero</span></div>
+    <div class="spine-book"><span>The Digital Money Wars</span></div>
+    <div class="spine-book"><span>ETFはこの7本を買いなさい</span></div>
+    <div class="spine-book"><span>Four Thousand Weeks</span></div>
+    <div class="spine-book"><span>Give and Take</span></div>
+    <div class="spine-book"><span>Influence</span></div>
+    <div class="spine-book"><span>Just Keep Buying</span></div>
+    <div class="spine-book"><span>The New Psychology of Success</span></div>
+    <div class="spine-book"><span>Psychology of Money</span></div>
+    <div class="spine-book"><span>Quiet</span></div>
+    <div class="spine-book"><span>So Can You</span></div>
+    <div class="spine-book"><span>一生リバウンドしないパレオダイエットの教科書</span></div>
+    <div class="spine-book"><span>科学的な適職</span></div>
+    <div class="spine-book"><span>神メンタル</span></div>
+    <div class="spine-book"><span>苦しかったときの話をしようか</span></div>
   </div>
   <div class="shelf-plank"></div>
 </div>
@@ -269,22 +281,30 @@
   </div>
 
   <div class="fav-item">
-    <span class="fav-title placeholder">[Book title]</span>
+    <span class="fav-title">Just Keep Buying</span>
     <span class="fav-why placeholder">[Why it's stuck with you, in a few words]</span>
   </div>
   <div class="fav-item">
-    <span class="fav-title placeholder">[Book title]</span>
+    <span class="fav-title">So Can You</span>
     <span class="fav-why placeholder">[Why it's stuck with you]</span>
   </div>
   <div class="fav-item">
-    <span class="fav-title placeholder">[Book title]</span>
+    <span class="fav-title">The New Psychology of Success</span>
+    <span class="fav-why placeholder">[Why it's stuck with you]</span>
+  </div>
+  <div class="fav-item">
+    <span class="fav-title">Give and Take</span>
+    <span class="fav-why placeholder">[Why it's stuck with you]</span>
+  </div>
+  <div class="fav-item">
+    <span class="fav-title">Designing Your Life</span>
     <span class="fav-why placeholder">[Why it's stuck with you]</span>
   </div>
 </section>
 
 <div class="note">
   <div class="note-box">
-    NOTE TO SELF — fill in the currently-reading card, swap the [Title] spans in .shelf-row for real book titles (add or remove .spine-book divs freely, the row scrolls horizontally if it overflows), and fill in the three favorites at the bottom. If you'd rather show real cover images instead of colored spines, an &lt;img&gt; can replace the .book-cover or .spine-book background. Delete this box when done.
+    NOTE TO SELF — shelf and favorites are filled in with real titles. Still placeholder: the note line on the currently-reading card, and the "why" on each of the 5 favorites. If you'd rather show real cover images instead of colored spines, an &lt;img&gt; can replace the .book-cover or .spine-book background. Delete this box when done.
   </div>
 </div>
 
