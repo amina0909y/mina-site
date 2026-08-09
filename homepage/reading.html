@@ -130,7 +130,7 @@
   .spine-book{
     flex:0 0 auto;
     width:64px;
-    height:230px;
+    height:260px;
     border-radius:4px;
     display:flex;
     align-items:flex-end;
@@ -151,6 +151,15 @@
     writing-mode:vertical-rl;
     transform:rotate(180deg);
     letter-spacing:0.02em;
+  }
+
+  /* Japanese titles read top-to-bottom naturally in vertical-rl —
+     no rotation needed, and a font that actually has the glyphs */
+  .spine-book span.jp{
+    font-family:'Hiragino Mincho ProN','Yu Mincho',serif;
+    font-size:0.64rem;
+    transform:none;
+    letter-spacing:0.04em;
   }
 
   .spine-book:nth-child(6n+1){background:var(--rose);}
@@ -253,12 +262,12 @@
 <div class="shelf">
   <div class="shelf-row">
     <div class="spine-book"><span>The 100 Year Life</span></div>
-    <div class="spine-book"><span>2040年の未来予測</span></div>
+    <div class="spine-book"><span class="jp">2040年の未来予測</span></div>
     <div class="spine-book"><span>Automatic Habit</span></div>
     <div class="spine-book"><span>The Defending Decade</span></div>
     <div class="spine-book"><span>Die with Zero</span></div>
     <div class="spine-book"><span>The Digital Money Wars</span></div>
-    <div class="spine-book"><span>ETFはこの7本を買いなさい</span></div>
+    <div class="spine-book"><span class="jp">ETFはこの7本を買いなさい</span></div>
     <div class="spine-book"><span>Four Thousand Weeks</span></div>
     <div class="spine-book"><span>Give and Take</span></div>
     <div class="spine-book"><span>Influence</span></div>
@@ -267,10 +276,10 @@
     <div class="spine-book"><span>Psychology of Money</span></div>
     <div class="spine-book"><span>Quiet</span></div>
     <div class="spine-book"><span>So Can You</span></div>
-    <div class="spine-book"><span>一生リバウンドしないパレオダイエットの教科書</span></div>
-    <div class="spine-book"><span>科学的な適職</span></div>
-    <div class="spine-book"><span>神メンタル</span></div>
-    <div class="spine-book"><span>苦しかったときの話をしようか</span></div>
+    <div class="spine-book"><span class="jp">一生リバウンドしないパレオダイエットの教科書</span></div>
+    <div class="spine-book"><span class="jp">科学的な適職</span></div>
+    <div class="spine-book"><span class="jp">神メンタル</span></div>
+    <div class="spine-book"><span class="jp">苦しかったときの話をしようか</span></div>
   </div>
   <div class="shelf-plank"></div>
 </div>
