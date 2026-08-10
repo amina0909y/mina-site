@@ -80,6 +80,29 @@
 
   .era-media svg{width:44px;height:44px;stroke:var(--rose);opacity:0.65;}
 
+  .era-media .single-media{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+  }
+
+  .era-media .media-duo{
+    position:absolute;
+    inset:0;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:3px;
+  }
+
+  .era-media .media-duo img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+  }
+
   .media-tag{
     position:absolute;
     bottom:12px;
@@ -171,6 +194,13 @@
 
   .studio-photo svg{width:36px;height:36px;stroke:var(--sage);opacity:0.65;}
 
+  .studio-photo video{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+  }
+
   /* NOTE BOX */
   .note{max-width:1040px;}
 </style>
@@ -199,8 +229,10 @@
     <div class="era">
       <div class="dot"></div>
       <div class="era-media">
-        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M23 7l-7 5 7 5V7z"></path><rect x="1" y="5" width="15" height="14" rx="2"></rect></svg>
-        <span class="media-tag">[video or photo]</span>
+        <div class="media-duo">
+          <img src="images/tea.png" alt="Young dancer in a red and gold costume">
+          <img src="images/harlequinade.png" alt="Dancer in a purple Harlequinade tutu on stage">
+        </div>
       </div>
       <div class="era-text">
         <p class="t-label">Age 3–10</p>
@@ -212,8 +244,7 @@
     <div class="era reverse">
       <div class="dot"></div>
       <div class="era-media">
-        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M23 7l-7 5 7 5V7z"></path><rect x="1" y="5" width="15" height="14" rx="2"></rect></svg>
-        <span class="media-tag">[video or photo]</span>
+        <img class="single-media" src="images/bolshoi.png" alt="Four dancers posing in front of the Bolshoi Theatre">
       </div>
       <div class="era-text">
         <p class="t-label">Age 14 &amp; 16</p>
@@ -225,8 +256,10 @@
     <div class="era">
       <div class="dot"></div>
       <div class="era-media">
-        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M23 7l-7 5 7 5V7z"></path><rect x="1" y="5" width="15" height="14" rx="2"></rect></svg>
-        <span class="media-tag">[video or photo]</span>
+        <div class="media-duo">
+          <img src="images/perm.png" alt="A dancer in arabesque in front of the Perm Opera and Ballet Theatre">
+          <img src="images/snow.png" alt="A snow-covered tree on a winter street in Perm">
+        </div>
       </div>
       <div class="era-text">
         <p class="t-label">Sep 2021, age 17</p>
@@ -238,8 +271,7 @@
     <div class="era reverse">
       <div class="dot"></div>
       <div class="era-media">
-        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M23 7l-7 5 7 5V7z"></path><rect x="1" y="5" width="15" height="14" rx="2"></rect></svg>
-        <span class="media-tag">[video or photo]</span>
+        <img class="single-media" src="images/class.png" alt="A framed painting of a ballerina hanging on a wall">
       </div>
       <div class="era-text">
         <p class="t-label">Age 18</p>
@@ -251,8 +283,7 @@
     <div class="era">
       <div class="dot"></div>
       <div class="era-media">
-        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M23 7l-7 5 7 5V7z"></path><rect x="1" y="5" width="15" height="14" rx="2"></rect></svg>
-        <span class="media-tag">[video or photo]</span>
+        <video class="single-media" src="images/studio.mp4" controls playsinline></video>
       </div>
       <div class="era-text">
         <p class="t-label">Now</p>
@@ -272,7 +303,8 @@
 
 <div class="studio-grid">
   <div class="studio-photo">
-    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"></rect><circle cx="9" cy="9" r="2"></circle><path d="M21 15l-5-5L5 21"></path></svg>
+    <video src="images/esmeralda.mp4" controls playsinline></video>
+    <span class="media-tag">Performance, not studio</span>
   </div>
   <div class="studio-photo">
     <svg viewBox="0 0 24 24" fill="none" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"></rect><circle cx="9" cy="9" r="2"></circle><path d="M21 15l-5-5L5 21"></path></svg>
@@ -281,7 +313,7 @@
 
 <div class="note">
   <div class="note-box">
-    NOTE TO SELF — the chronology and dates are filled in for all 5 eras; what's still placeholder (rose italic) are the specific memories/performance details within each, plus the whole "Now" era at the end. Swap each .era-media icon for a real photo or &lt;video controls&gt; once you have the file. The two .studio-photo divs at the bottom are for your practice shots. Delete this box when done.
+    NOTE TO SELF — all real media is in place now (tea + harlequinade, the Bolshoi photo, perm + snow, the class photo, the studio video, and the esmeralda performance clip). What's still placeholder (rose italic) are the specific memories/details within each era, plus the entire "Now" era text at the end. The second .studio-photo slot is still empty — add a photo there whenever you have one. Delete this box when done.
   </div>
 </div>
 
