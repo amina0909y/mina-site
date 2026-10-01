@@ -344,7 +344,7 @@
       <p class="t-label">Currently reading</p>
       <h2>Designing Your Life</h2>
       <p class="author">Bill Burnett &amp; Dave Evans</p>
-      <p class="note-line placeholder">[A line or two on how it's going — felt like the right pick while figuring out what's next after CS, or whatever's true]</p>
+      <p class="note-line placeholder">applies design thinking to personal growth. Written by Bill Burnett and Dave Evans, it helps you experiment, prototype, and build a meaningful career and joyful life.</p>
     </div>
   </div>
 </section>
@@ -406,12 +406,6 @@
   </div>
 </section>
 
-<div class="note">
-  <div class="note-box">
-    NOTE TO SELF — shelf and favorites are filled in with real titles. Still placeholder: the note line on the currently-reading card, and the "why" on each of the 5 favorites. If you'd rather show real cover images instead of colored spines, an &lt;img&gt; can replace the .book-cover or .spine-book background. Delete this box when done.
-  </div>
-</div>
-
 <footer>Mina Yoshikawa · built with care</footer>
 
 <div class="book-modal-overlay" id="book-modal" onclick="if(event.target===this)closeBookModal()">
@@ -434,32 +428,32 @@
   // Fill in a real brief + feeling for each book below. Anything left as
   // the default placeholder will show generic filler text in the popup.
   const bookNotes = {
-    "The 100 Year Life": { brief: "[What this book is about, in a sentence or two]", feeling: "[How it made you feel, or what you took from it]" },
-    "2040年の未来予測": { brief: "[What this book is about, in a sentence or two]", feeling: "[How it made you feel, or what you took from it]" },
-    "Automatic Habit": { brief: "[What this book is about, in a sentence or two]", feeling: "[How it made you feel, or what you took from it]" },
-    "The Defending Decade": { brief: "[What this book is about, in a sentence or two]", feeling: "[How it made you feel, or what you took from it]" },
-    "Die with Zero": { brief: "[What this book is about, in a sentence or two]", feeling: "[How it made you feel, or what you took from it]" },
-    "The Digital Money Wars": { brief: "[What this book is about, in a sentence or two]", feeling: "[How it made you feel, or what you took from it]" },
-    "ETFはこの7本を買いなさい": { brief: "[What this book is about, in a sentence or two]", feeling: "[How it made you feel, or what you took from it]" },
-    "Four Thousand Weeks": { brief: "[What this book is about, in a sentence or two]", feeling: "[How it made you feel, or what you took from it]" },
-    "Give and Take": { brief: "[What this book is about, in a sentence or two]", feeling: "[How it made you feel, or what you took from it]" },
-    "Influence": { brief: "[What this book is about, in a sentence or two]", feeling: "[How it made you feel, or what you took from it]" },
-    "Just Keep Buying": { brief: "[What this book is about, in a sentence or two]", feeling: "[How it made you feel, or what you took from it]" },
-    "The New Psychology of Success": { brief: "[What this book is about, in a sentence or two]", feeling: "[How it made you feel, or what you took from it]" },
-    "Psychology of Money": { brief: "[What this book is about, in a sentence or two]", feeling: "[How it made you feel, or what you took from it]" },
-    "Quiet": { brief: "[What this book is about, in a sentence or two]", feeling: "[How it made you feel, or what you took from it]" },
-    "So Can You": { brief: "[What this book is about, in a sentence or two]", feeling: "[How it made you feel, or what you took from it]" },
-    "一生リバウンドしないパレオダイエットの教科書": { brief: "[What this book is about, in a sentence or two]", feeling: "[How it made you feel, or what you took from it]" },
-    "科学的な適職": { brief: "[What this book is about, in a sentence or two]", feeling: "[How it made you feel, or what you took from it]" },
-    "神メンタル": { brief: "[What this book is about, in a sentence or two]", feeling: "[How it made you feel, or what you took from it]" },
-    "苦しかったときの話をしようか": { brief: "[What this book is about, in a sentence or two]", feeling: "[How it made you feel, or what you took from it]" }
+    "The 100 Year Life": { brief: "Explores how rising life expectancies require a complete redesign of society, work, and retirement, moving away from the traditional three-stage life model into a flexible, multi-stage life."},
+    "2040年の未来予測": { brief: "Explores Japan's future by 2040, contrasting rapid technological growth like 6G and automation against severe domestic challenges, including rapid aging, economic decline, and rising climate and natural disaster risks."},
+    "Automic Habit": { brief: "Explains how tiny, daily changes compound into massive results. Focus on identity and systems rather than goals to build good habits and stop bad ones."},
+    "The Defending Decade": { brief: "Argues that your twenties are the most critical period for career, relationship, and personal development, urging young adults to claim their adulthood and intentionality shape their future."},
+    "Die with Zero": { brief: "Argues you should maximize your life experiences rather than your bank account. It urges you to spend your wealth on meaningful memories while you still have the health to enjoy them."},
+    "The Digital Money Wars": { brief: "Explores how digital currencies shift global power, analyzing Japan's economic weaknesses and offering a clear, strategic digital roadmap for the nation to survive and innovate today."},
+    "ETFはこの7本を買いなさい": { brief: "This practical guide explains the benefits of exchange-traded funds (ETFs) and recommends seven specific low-cost, diversified global ETFs to build an optimal long-term portfolio." },
+    "Four Thousand Weeks": { brief: "Life lasts about four thousand weeks. Instead of chasing endless productivity or control, we must accept our finite time, embrace hard choices, and find true joy in the present moment."},
+    "Give and Take": { brief: "Explains that success depends on how we interact with others. It categorizes people into givers, takers, and matchers, proving that givers often achieve the greatest long-term success."},
+    "Influence": { brief: "explores six psychological principles of persuasion. It explains how marketers, salespeople, and compliance professionals manipulate human behavior, and teaches you how to recognize and resist these tactics."},
+    "Just Keep Buying": { brief: "It teaches that building wealth requires consistency over perfection. Instead of timing markets, you should increase your income, save money regularly, and invest continuously without stopping." },
+    "The New Psychology of Success": { brief: "[introduces the concept of mindsets, showing how believing your abilities can be developed (growth mindset) leads to far greater success than believing they are fixed (fixed mindset)" },
+    "Psychology of Money": { brief: "shows that financial success depends on your behavior and emotions rather than math or intelligence. True wealth means having control over your time, not flashing expensive items." },
+    "Quiet": { brief: "argues that Western culture dramatically undervalues introverts. It highlights how the Extrovert Ideal dominates society, while demonstrating that introverts possess immense, quiet strengths essential to the world" },
+    "So Can You": { brief: "Mitsuyo Ohira's memoir details severe school bullying, teenage delinquency, and hardship in Japan, showing how a mentor helped her overcome the odds to pass the bar exam and become a lawyer." },
+    "一生リバウンドしないパレオダイエットの教科書": { brief: "This science-backed book by Yu Suzuki explains how to achieve sustainable weight loss and health by adopting a hunter-gatherer lifestyle, focusing on natural foods, proper sleep, and minimal exercise." },
+    "科学的な適職": { brief: "Based on thousands of studies, this book debunks common career myths, avoids toxic workplaces, and outlines five practical steps to help you select a truly fulfilling job for maximum happiness" },
+    "神メンタル": { brief: "teaches that controlling your mind and setting clear goals can change your reality. It outlines practical habits to reprogram your brain, boost confidence, and achieve ultimate success" },
+    "苦しかったときの話をしようか": { brief: " teaches that controlling your mind and setting clear goals can change your reality. It outlines practical habits to reprogram your brain, boost confidence, and achieve ultimate success." }
   };
 
   function openBook(title) {
     const data = bookNotes[title] || { brief: "[Add a note for this one]", feeling: "[Add a note for this one]" };
     document.getElementById('book-modal-title').textContent = title;
     document.getElementById('book-modal-brief').textContent = data.brief;
-    document.getElementById('book-modal-feeling').textContent = data.feeling;
+
     document.getElementById('book-modal').classList.add('open');
   }
 

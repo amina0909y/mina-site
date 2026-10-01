@@ -70,10 +70,10 @@
   .era-media{
     background:linear-gradient(135deg, rgba(201,123,132,0.22), rgba(201,161,90,0.18));
     border-radius:18px;
-    min-height:230px;
+    min-height:400px;
     display:flex;
     align-items:center;
-    justify-content:center;
+    justify-content: center;
     position:relative;
     overflow:hidden;
   }
@@ -86,21 +86,6 @@
     width:100%;
     height:100%;
     object-fit:cover;
-  }
-
-  .era-media .media-duo{
-    position:absolute;
-    inset:0;
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:3px;
-  }
-
-  .era-media .media-duo img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    display:block;
   }
 
   .media-tag{
@@ -164,43 +149,23 @@
     margin-bottom:8px;
   }
 
-  .studio-head span{
-    font-size:0.94rem;
-    color:var(--ink-soft);
-  }
-
-  .studio-grid{
-    max-width:800px;
-    margin:36px auto 0;
-    padding:0 24px;
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:20px;
-    position:relative;
-    z-index:1;
-  }
 
   @media (max-width:600px){ .studio-grid{grid-template-columns:1fr;} }
+  
 
-  .studio-photo{
-    background:rgba(143,164,130,0.18);
-    border-radius:16px;
-    min-height:260px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    position:relative;
-  }
-
-  .studio-photo svg{width:36px;height:36px;stroke:var(--sage);opacity:0.65;}
-
-  .studio-photo video{
-    width:100%;
-    height:100%;
+  .performance{
+    
     object-fit:cover;
-    display:block;
+    display:grid;
+    justify-content: center;
+    align-items: center;
   }
 
+  .performance video{
+    max-width: 700px;
+    height: 100%;
+    border-radius: 20px;
+  }
   /* NOTE BOX */
   .note{max-width:1040px;}
 </style>
@@ -229,15 +194,12 @@
     <div class="era">
       <div class="dot"></div>
       <div class="era-media">
-        <div class="media-duo">
-          <img src="images/tea.png" alt="Young dancer in a red and gold costume">
-          <img src="images/harlequinade.png" alt="Dancer in a purple Harlequinade tutu on stage">
-        </div>
+        <img class="single-media" src="images/harlequinade.png" alt="Dancer in a purple Harlequinade tutu on stage">
       </div>
       <div class="era-text">
         <p class="t-label">Age 3–10</p>
         <h3>Starting out</h3>
-        <p>There was a studio right next to my house, and I started when I was three — more out of proximity than any grand plan. It pulled me in gradually, and by ten I was dancing every day. <span class="placeholder">[A memory from those early years, or your first time on an actual stage]</span></p>
+        <p>There was a studio right next to my house, and I started when I was three. It pulled me in gradually, and by ten I was dancing every day. </p>
       </div>
     </div>
 
@@ -249,22 +211,19 @@
       <div class="era-text">
         <p class="t-label">Age 14 &amp; 16</p>
         <h3>Berlin, then the Bolshoi Academy</h3>
-        <p>Two-week training programs abroad — Berlin at fourteen, the Bolshoi Ballet Academy in Russia at sixteen. Both brief, both intense, and both made me want more. <span class="placeholder">[What stood out most — the training, the people, a specific class or moment]</span></p>
+        <p>Two weeks of training programs abroad — Berlin at fourteen, the Bolshoi Ballet Academy in Russia at sixteen. Both brief, both intense, and both made me want more. Having trainings with other young talents who want to be profectional influenced me a lot.</p>
       </div>
     </div>
 
     <div class="era">
       <div class="dot"></div>
       <div class="era-media">
-        <div class="media-duo">
-          <img src="images/perm.png" alt="A dancer in arabesque in front of the Perm Opera and Ballet Theatre">
-          <img src="images/snow.png" alt="A snow-covered tree on a winter street in Perm">
-        </div>
+        <img class="single-media" src="images/snow.png" alt="A snow-covered tree on a winter street in Perm">
       </div>
       <div class="era-text">
         <p class="t-label">Sep 2021, age 17</p>
         <h3>Moving to Perm, Russia</h3>
-        <p>I moved to attend ballet school full-time — the plan was four years, through to graduation. <span class="placeholder">[What that year was actually like — the training, the routine, a performance or role you're proud of from this time]</span></p>
+        <p>I moved to attend ballet school full-time. The plan was four years, through to graduation. I practiced hard 6 dsys a week. it was tough, but it made me stronger and independant.</p>
       </div>
     </div>
 
@@ -276,7 +235,7 @@
       <div class="era-text">
         <p class="t-label">Age 18</p>
         <h3>The war, and letting go</h3>
-        <p>The war started, and I had to leave. It wasn't how I expected the four years in Perm to end, and quitting ballet altogether was one of the hardest decisions I've made. <span class="placeholder">[Anything you want to add about how that felt, or how you look back on it now]</span></p>
+        <p>The war started, and I had to leave. It wasn't how I expected the four years in Perm to end, and quitting ballet altogether was one of the hardest decisions I've made.</p>
       </div>
     </div>
 
@@ -287,8 +246,8 @@
       </div>
       <div class="era-text">
         <p class="t-label">Now</p>
-        <h3 class="placeholder">[Where ballet fits in your life today]</h3>
-        <p class="placeholder">[Not performing anymore, but thinking about the business or creative side of it — or whatever's true for you right now]</p>
+        <h3>Where ballet fits in my life today</h3>
+        <p>Not performing anymore, but I enjoy dancing everyweek as a hobby without any pressure.</p>
       </div>
     </div>
 
@@ -296,25 +255,11 @@
 </section>
 
 <div class="studio-head">
-  <p class="eyebrow">// behind it all</p>
-  <h3>In the studio</h3>
-  <span>The quiet part nobody films</span>
+  <h3>Performance</h3>
 </div>
 
-<div class="studio-grid">
-  <div class="studio-photo">
-    <video src="images/esmeralda.mp4" controls playsinline></video>
-    <span class="media-tag">Performance, not studio</span>
-  </div>
-  <div class="studio-photo">
-    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"></rect><circle cx="9" cy="9" r="2"></circle><path d="M21 15l-5-5L5 21"></path></svg>
-  </div>
-</div>
-
-<div class="note">
-  <div class="note-box">
-    NOTE TO SELF — all real media is in place now (tea + harlequinade, the Bolshoi photo, perm + snow, the class photo, the studio video, and the esmeralda performance clip). What's still placeholder (rose italic) are the specific memories/details within each era, plus the entire "Now" era text at the end. The second .studio-photo slot is still empty — add a photo there whenever you have one. Delete this box when done.
-  </div>
+<div class="performance">
+  <video src="images/esmeralda.mp4" controls playsinline></video>
 </div>
 
 <footer>[your name] · built with care</footer>
